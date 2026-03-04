@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<title>Login</title>
+
+<style>
+
+body{
+font-family:'Roboto',sans-serif;
+background:#f3f3f3;
+}
+
+.input{
+width:100%;
+padding:14px 20px;
+border:1px solid #ddd;
+border-radius:40px;
+outline:none;
+font-size:15px;
+background:white;
+}
+
+.input:focus{
+border-color:black;
+}
+
+.login-btn{
+width:100%;
+padding:14px;
+border-radius:40px;
+background:black;
+color:white;
+font-weight:500;
+transition:0.2s;
+}
+
+.login-btn:hover{
+background:#222;
+}
+
+</style>
+
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+
+<div class="w-full max-w-md px-6">
+
+<div class="text-center mb-10">
+
+<h1 id="greeting" class="text-4xl font-bold mb-4"></h1>
+
+<p class="text-gray-500 text-sm">
+  Enter your username and password to access private gallery
+</p>
+
+</div>
+
+{% if error %}
+
+<div class="flex items-center gap-3 bg-red-500 text-white text-sm p-3 rounded mb-4">
+
+<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+d="M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4c-.77-1.33-2.69-1.33-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z" />
+
+</svg>
+
+<span>{{ error }}</span>
+
+</div>
+
+{% endif %}
+
+<form method="POST" class="space-y-4">
+
+<input
+name="username"
+placeholder="Username"
+required
+class="input"
+>
+
+<input
+type="password"
+name="password"
+placeholder="Password"
+required
+class="input"
+>
+
+<button class="login-btn">
+Login
+</button>
+
+</form>
+
+<div class="text-center mt-10 text-sm text-gray-400">Made with ❤️ by Andre Firmansah
+
+</div>
+
+</div>
+
+<script>
+
+function greetingTime(){
+
+let hour = new Date().getHours()
+let greeting = ""
+
+if(hour >= 5 && hour < 11){
+greeting = "Good Morning Andre 👋"
+}
+else if(hour >= 11 && hour < 15){
+greeting = "Good Afternoon Andre 👋"
+}
+else if(hour >= 15 && hour < 18){
+greeting = "Good Afternoon Andre 👋"
+}
+else{
+greeting = "Good Evening Andre 👋"
+}
+
+document.getElementById("greeting").innerText = greeting
+
+}
+
+greetingTime()
+
+</script>
+</body>
+</html>
